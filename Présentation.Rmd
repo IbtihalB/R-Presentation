@@ -1,0 +1,327 @@
+---
+title: "Etude sur la performance des étudiants d'une école publique en Amérique"
+author: "Bellarabi Ibtihal"
+date: "27/11/2021"
+output: 
+  ioslides_presentation:
+    css: présentation.css
+    self_contained: no
+    incremental: true
+---
+
+```{r warning=TRUE, include=FALSE}
+library(ggplot2)
+library(GGally)
+library(corrplot)
+library(boot)
+```
+# La Performance des étudiants 
+
+## La performance des étudiants est généralement influencé par les facteurs :
+<table>
+<tr><td > * Sociales </td><td> * Ethniques</td><td> * Préparation </td></tr>
+<tr>
+  <td width = "300px" height = "300px"><img src="www/télé1.jfif" alt="" width = "200px" height = "200px" ></td>
+  <td width = "300px" height = "300px"><img src="www/r.jfif" alt="" width = "200px" height = "200px"></td>
+  <td width = "300px" height = "300px"><img src="www/i.jpg" alt="" width = "200px" height = "200px"></td>
+</tr></table> 
+ 
+
+# La présentation des données 
+
+## Informations sur la base de données:
+### . Nombre d'individus : 1000
+### . Nombre de variables : 3 quantitatives et 5 qualitatives
+
+<table class="styled-table" align="center">
+    <thead>
+        <tr>
+            <th>Variables Qualitatives</th>
+            <th>Variables Quantitatives</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr >
+            <td>Gender</td>
+            <td>Math score</td>
+        </tr>
+        <tr>
+            <td>Race ethnicity</td>
+            <td>Reading score</td>
+        </tr>
+        <tr>
+            <td>Parental level of education</td>
+            <td> Writing score</td>
+        </tr>
+        <tr>
+            <td>   Lunch  </td>
+            <td>     </td>
+        </tr>
+        <tr>
+            <td>Test preparation course </td>
+            <td>     </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+# Analyse univariée
+
+## Barplot
+### Fréquence des variables qualitatives
+```{r Barp, echo=FALSE}
+datos <-read.csv("StudentsPerformance.csv",dec = ",")
+NomColonnes <- c("gender","race ethnicity","parental level of education","lunch","test preparation course","math score","reading score","writing score")
+par(mfrow = c(2, 3))
+for (i in 1:5) {
+  tab.eff <- table(datos[,i])
+  tab.freq <- prop.table(tab.eff)
+  barplot(tab.freq,xlab=NomColonnes[i],ylab="Fréquence") 
+}
+
+
+
+
+```
+
+
+
+## Histogramme
+### Fréquence des variables quanitatives
+
+```{r Histo, echo=FALSE}
+par(mfrow = c(2, 2))
+for (i in 6:8) {
+  hist(datos[,i], probability = TRUE, xlab = NomColonnes[i], ylab = "Densité de fréquence",
+       main = "")
+  dens <- density(datos[,i])
+  lines(dens, col = "red", lwd=2)
+}
+
+
+```
+
+# Analyse bivariée
+
+## Boxplot
+
+### Boxplot selon le sexe 
+
+```{r BoxPlot, echo=FALSE, warning=FALSE}
+library(grid)
+library(ggplot2)
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(1, 3)))
+A <- matrix(6:8, nrow = 1, ncol = 3, byrow = TRUE)
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+
+for (i in 6:8) {
+  boite <- ggplot(datos, aes(x =datos$gender , y= datos[,i])) +
+    geom_boxplot() +
+    labs(x ="Gender", y = NomColonnes[i]) + 
+    theme_minimal ()
+  pos <- which(A==i, arr.ind = TRUE)
+  print(boite, vp = vplayout(pos[1,1],pos[1,2]))
+}
+
+
+
+```
+
+
+## Boxplot
+
+### Boxplot selon la race
+
+```{r BoxPlot2, echo=FALSE, warning=FALSE}
+library(grid)
+library(ggplot2)
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(2, 2)))
+A <- matrix(6:8, nrow = 2, ncol = 2, byrow = TRUE)
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+
+for (i in 6:8) {
+  boite <- ggplot(datos, aes(x =datos$race.ethnicity , y= datos[,i])) +
+    geom_boxplot() +
+    labs(x ="Race", y = NomColonnes[i]) + 
+    theme_minimal ()
+  pos <- which(A==i, arr.ind = TRUE)
+  print(boite, vp = vplayout(pos[1,1],pos[1,2]))
+}
+
+
+
+```
+
+
+## Boxplot
+
+### Boxplot selon l'éducation des parents 
+
+```{r BoxPlot4, echo=FALSE, warning=FALSE}
+library(grid)
+library(ggplot2)
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(3, 1)))
+A <- matrix(6:8, nrow = 3, ncol = 1, byrow = TRUE)
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+
+for (i in 6:8) {
+  boite <- ggplot(datos, aes(x =datos$parental.level.of.education , y= datos[,i])) +
+    geom_boxplot() +
+    labs(x ="niveau d'éducation des parents", y = NomColonnes[i]) + 
+    theme_minimal ()
+  pos <- which(A==i, arr.ind = TRUE)
+  print(boite, vp = vplayout(pos[1,1],pos[1,2]))
+}
+
+
+
+```
+
+
+## Boxplot
+
+### Boxplot selon le type du repas
+
+```{r BoxPlot5, echo=FALSE, warning=FALSE}
+library(grid)
+library(ggplot2)
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(1, 3)))
+A <- matrix(6:8, nrow = 1, ncol = 3, byrow = TRUE)
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+
+for (i in 6:8) {
+  boite <- ggplot(datos, aes(x =datos$lunch , y= datos[,i])) +
+    geom_boxplot() +
+    labs(x ="type du repas", y = NomColonnes[i]) + 
+    theme_minimal ()
+  pos <- which(A==i, arr.ind = TRUE)
+  print(boite, vp = vplayout(pos[1,1],pos[1,2]))
+}
+
+
+```
+
+
+## Boxplot
+
+### Boxplot selon la compétion de la préparation
+
+```{r BoxPlot6, echo=FALSE, warning=FALSE}
+library(grid)
+library(ggplot2)
+
+grid.newpage()
+pushViewport(viewport(layout = grid.layout(1, 3)))
+A <- matrix(6:8, nrow = 1, ncol = 3, byrow = TRUE)
+vplayout <- function(x, y) viewport(layout.pos.row = x, layout.pos.col = y)
+
+for (i in 6:8) {
+  boite <- ggplot(datos, aes(x =datos$test.preparation.course , y= datos[,i])) +
+    geom_boxplot() +
+    labs(x ="La complétion de la Préparation", y = NomColonnes[i]) + 
+    theme_minimal ()
+  pos <- which(A==i, arr.ind = TRUE)
+  print(boite, vp = vplayout(pos[1,1],pos[1,2]))
+}
+
+
+```
+
+
+## Biplot
+
+### Biplot selon le sexe 
+
+```{r , echo=FALSE}
+ggpairs(datos, columns = 6:8, ggplot2::aes(colour=gender))
+```
+
+
+## Biplot
+
+### Biplot selon la race
+
+```{r , echo=FALSE}
+ggpairs(datos, columns = 6:8, ggplot2::aes(colour=race.ethnicity))
+  
+```
+
+
+## Biplot
+### Biplot selon le niveau d'éducation des parents
+
+```{r , echo=FALSE}
+
+ggpairs(datos, columns = 6:8, ggplot2::aes(colour=parental.level.of.education))
+  
+```
+
+
+## Biplot
+
+### Biplot selon la qualité d'alimentation
+
+```{r , echo=FALSE}
+
+ggpairs(datos, columns = 6:8, ggplot2::aes(colour=lunch))
+  
+```
+
+
+## Biplot
+
+### Biplot selon la complétion des préparation
+
+
+```{r , echo=FALSE}
+
+ggpairs(datos, columns = 6:8, ggplot2::aes(colour=test.preparation.course))
+  
+```
+
+
+## Corrélation deux par deux
+
+### Corrélation deux par deux des variables quantitatives
+```{r echo=FALSE}
+
+  mat.cor <- cor(x = datos[6:8])
+  corrplot(mat.cor , type = "upper", order = "hclust", tl.col = "black" , tl.srt =45)
+
+```
+
+
+
+
+# Conclusion
+
+## Résultats
+### Interprétations des plots 
+<table margin-top="-20px">
++ En général, la fréquence des notes est trés élevée, au dessus de la moyenne.
++ Les notes sont élevées pour les filles que les garcons à la lecture et l'écriture et le contraire en maths.
+* On constate que les notes sont mieux en cas de complétion de la préparation et de profit d'un repas standard.
+* En ce qui concerne, le niveau d'éducation des parents, les étudiants qui ont des parents avec des bachelors et des masters aient des notes meilleures que les autres.  
+* Et finalement, on constate que la race E qui représente en Amérique les chinois sont les mieux en toutes les matières et les   africains et les blancs sont les derniers en notes .
+</table>
+
+
+# Sources
+
+## Sources d'aide pour le code
+**https://github.com/rstudio/ShinyDeveloperConference/blob/master/Debugging/shiny-debugging.Rmd**
+**https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l**
+
+### Sources de la dataset 
+**https://www.kaggle.com/spscientist/students-performance-in-exams**
+

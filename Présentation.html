@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Etude sur la performance des étudiants d’une école publique en Amérique</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="generator" content="pandoc" />
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <base target="_blank">
+
+  <script type="text/javascript">
+    var SLIDE_CONFIG = {
+      // Slide settings
+      settings: {
+                title: 'Etude sur la performance des étudiants d’une école publique en Amérique',
+                        useBuilds: true,
+        usePrettify: true,
+        enableSlideAreas: true,
+        enableTouch: true,
+                      },
+
+      // Author information
+      presenters: [
+            {
+        name:  'Bellarabi Ibtihal' ,
+        company: '',
+        gplus: '',
+        twitter: '',
+        www: '',
+        github: ''
+      },
+            ]
+    };
+  </script>
+
+  <script src="Présentation_files/header-attrs-2.11/header-attrs.js"></script>
+  <link href="Présentation_files/ioslides-13.5.1/fonts/fonts.css" rel="stylesheet" />
+  <link href="Présentation_files/ioslides-13.5.1/theme/css/default.css" rel="stylesheet" />
+  <link href="Présentation_files/ioslides-13.5.1/theme/css/phone.css" rel="stylesheet" />
+  <script src="Présentation_files/ioslides-13.5.1/js/modernizr.custom.45394.js"></script>
+  <script src="Présentation_files/ioslides-13.5.1/js/prettify/prettify.js"></script>
+  <script src="Présentation_files/ioslides-13.5.1/js/prettify/lang-r.js"></script>
+  <script src="Présentation_files/ioslides-13.5.1/js/prettify/lang-yaml.js"></script>
+  <script src="Présentation_files/ioslides-13.5.1/js/hammer.js"></script>
+  <script src="Présentation_files/ioslides-13.5.1/js/slide-controller.js"></script>
+  <script src="Présentation_files/ioslides-13.5.1/js/slide-deck.js"></script>
+
+  <style type="text/css">
+
+    b, strong {
+      font-weight: bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    summary {
+      display: list-item;
+    }
+
+    slides > slide {
+      -webkit-transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .auto-fadein {
+      -webkit-transition: opacity 0.6s ease-in;
+      -webkit-transition-delay: 0.4s;
+      -moz-transition: opacity 0.6s ease-in 0.4s;
+      -o-transition: opacity 0.6s ease-in 0.4s;
+      transition: opacity 0.6s ease-in 0.4s;
+      opacity: 0;
+    }
+/* https://github.com/ropensci/plotly/pull/524#issuecomment-468142578 */
+slide:not(.current) .plotly.html-widget{
+  display: block;
+}
+
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+            
+  </style>
+
+  <link rel="stylesheet" href="présentation.css" type="text/css" />
+
+</head>
+
+<body style="opacity: 0">
+
+<slides>
+
+  <slide class="title-slide segue nobackground">
+        <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+            <p style="margin-top: 6px; margin-left: -2px;">27/11/2021</p>
+          </hgroup>
+  </slide>
+
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>La Performance des étudiants</h2></hgroup><article  id="la-performance-des-étudiants">
+
+</article></slide><slide class=""><hgroup><h2>La performance des étudiants est généralement influencé par les facteurs :</h2></hgroup><article  id="la-performance-des-étudiants-est-généralement-influencé-par-les-facteurs">
+
+<table>
+
+<tr>
+
+<td >
+
+<ul class = 'build'>
+<li>Sociales
+
+</td>
+
+<td>
+
+<ul class = 'build'>
+<li>Ethniques
+
+</td>
+
+<td>
+
+<ul class = 'build'>
+<li>Préparation
+
+</td>
+
+</tr>
+
+<tr>
+
+<td width="300px" height="300px">
+
+<img src="www/télé1.jfif" alt="" width = "200px" height = "200px" >
+
+</td>
+
+<td width="300px" height="300px">
+
+<img src="www/r.jfif" alt="" width = "200px" height = "200px">
+
+</td>
+
+<td width="300px" height="300px">
+
+<img src="www/i.jpg" alt="" width = "200px" height = "200px">
+
+</td>
+
+</tr>
+
+</table></li>
+</ul></li>
+</ul></li>
+</ul>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>La présentation des données</h2></hgroup><article  id="la-présentation-des-données">
+
+</article></slide><slide class=""><hgroup><h2>Informations sur la base de données:</h2></hgroup><article  id="informations-sur-la-base-de-données">
+
+<h3>. Nombre d’individus : 1000</h3>
+
+<h3>. Nombre de variables : 3 quantitatives et 5 qualitatives</h3>
+
+<table class="styled-table" align="center">
+
+<thead>
+
+<tr>
+
+<th>
+
+Variables Qualitatives
+
+</th>
+
+<th>
+
+Variables Quantitatives
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>
+
+Gender
+
+</td>
+
+<td>
+
+Math score
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Race ethnicity
+
+</td>
+
+<td>
+
+Reading score
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Parental level of education
+
+</td>
+
+<td>
+
+Writing score
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Lunch
+
+</td>
+
+<td>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+
+Test preparation course
+
+</td>
+
+<td>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Analyse univariée</h2></hgroup><article  id="analyse-univariée">
+
+</article></slide><slide class=""><hgroup><h2>Barplot</h2></hgroup><article  id="barplot">
+
+<h3>Fréquence des variables qualitatives</h3>
+
+<p><img src="Présentation_files/figure-html/Barp-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Histogramme</h2></hgroup><article  id="histogramme">
+
+<h3>Fréquence des variables quanitatives</h3>
+
+<p><img src="Présentation_files/figure-html/Histo-1.png" width="720" /></p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Analyse bivariée</h2></hgroup><article  id="analyse-bivariée">
+
+</article></slide><slide class=""><hgroup><h2>Boxplot</h2></hgroup><article  id="boxplot">
+
+<h3>Boxplot selon le sexe</h3>
+
+<p><img src="Présentation_files/figure-html/BoxPlot-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Boxplot</h2></hgroup><article  id="boxplot-1">
+
+<h3>Boxplot selon la race</h3>
+
+<p><img src="Présentation_files/figure-html/BoxPlot2-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Boxplot</h2></hgroup><article  id="boxplot-2">
+
+<h3>Boxplot selon l’éducation des parents</h3>
+
+<p><img src="Présentation_files/figure-html/BoxPlot4-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Boxplot</h2></hgroup><article  id="boxplot-3">
+
+<h3>Boxplot selon le type du repas</h3>
+
+<p><img src="Présentation_files/figure-html/BoxPlot5-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Boxplot</h2></hgroup><article  id="boxplot-4">
+
+<h3>Boxplot selon la compétion de la préparation</h3>
+
+<p><img src="Présentation_files/figure-html/BoxPlot6-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Biplot</h2></hgroup><article  id="biplot">
+
+<h3>Biplot selon le sexe</h3>
+
+<p><img src="Présentation_files/figure-html/unnamed-chunk-2-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Biplot</h2></hgroup><article  id="biplot-1">
+
+<h3>Biplot selon la race</h3>
+
+<p><img src="Présentation_files/figure-html/unnamed-chunk-3-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Biplot</h2></hgroup><article  id="biplot-2">
+
+<h3>Biplot selon le niveau d’éducation des parents</h3>
+
+<p><img src="Présentation_files/figure-html/unnamed-chunk-4-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Biplot</h2></hgroup><article  id="biplot-3">
+
+<h3>Biplot selon la qualité d’alimentation</h3>
+
+<p><img src="Présentation_files/figure-html/unnamed-chunk-5-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Biplot</h2></hgroup><article  id="biplot-4">
+
+<h3>Biplot selon la complétion des préparation</h3>
+
+<p><img src="Présentation_files/figure-html/unnamed-chunk-6-1.png" width="720" /></p>
+
+</article></slide><slide class=""><hgroup><h2>Corrélation deux par deux</h2></hgroup><article  id="corrélation-deux-par-deux">
+
+<h3>Corrélation deux par deux des variables quantitatives</h3>
+
+<p><img src="Présentation_files/figure-html/unnamed-chunk-7-1.png" width="720" /></p>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Conclusion</h2></hgroup><article  id="conclusion">
+
+</article></slide><slide class=""><hgroup><h2>Résultats</h2></hgroup><article  id="résultats">
+
+<h3>Interprétations des plots</h3>
+
+<table margin-top="-20px">
+
+<ul class = 'build'>
+<li>En général, la fréquence des notes est trés élevée, au dessus de la moyenne.</li>
+<li>Les notes sont élevées pour les filles que les garcons à la lecture et l’écriture et le contraire en maths.</li>
+<li>On constate que les notes sont mieux en cas de complétion de la préparation et de profit d’un repas standard.</li>
+<li>En ce qui concerne, le niveau d’éducation des parents, les étudiants qui ont des parents avec des bachelors et des masters aient des notes meilleures que les autres.<br/></li>
+<li>Et finalement, on constate que la race E qui représente en Amérique les chinois sont les mieux en toutes les matières et les africains et les blancs sont les derniers en notes .</li>
+</ul>
+
+</table>
+
+</article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Sources</h2></hgroup><article  id="sources">
+
+</article></slide><slide class=""><hgroup><h2>Sources d’aide pour le code</h2></hgroup><article  id="sources-daide-pour-le-code">
+
+<p><strong><a href='https://github.com/rstudio/ShinyDeveloperConference/blob/master/Debugging/shiny-debugging.Rmd' title=''>https://github.com/rstudio/ShinyDeveloperConference/blob/master/Debugging/shiny-debugging.Rmd</a></strong> <strong><a href='https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l' title=''>https://dev.to/dcodeyt/creating-beautiful-html-tables-with-css-428l</a></strong></p>
+
+<h3>Sources de la dataset</h3>
+
+<p><strong><a href='https://www.kaggle.com/spscientist/students-performance-in-exams' title=''>https://www.kaggle.com/spscientist/students-performance-in-exams</a></strong></p></article></slide>
+
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!-- map slide visiblity events into shiny -->
+<script>
+  (function() {
+    if (window.jQuery) {
+       window.jQuery(document).on('slideleave', function(e) {
+         window.jQuery(e.target).trigger('hidden');
+      });
+       window.jQuery(document).on('slideenter', function(e) {
+         window.jQuery(e.target).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

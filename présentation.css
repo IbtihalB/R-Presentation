@@ -1,0 +1,92 @@
+
+
+slides > slide.background-color: #5F9EA0; {
+  color: #5F9EA0;
+}
+
+slide img {
+  max-width: 768px;
+  max-height: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body slides > slide {
+  font-family: Source Sans Pro;
+  font-display: center;
+    color: #5F9EA0;
+
+}
+
+slides > slide.backdrop {
+  background-image: url(images/texturebg.png);
+  background-position: 0 100%;
+  background-repeat: repeat-x;
+
+}
+
+slides > slide:not(.nobackground):after {
+  color:#5F9EA0 ;
+}
+
+slides > slide > header{
+  color: #5F9EA0;
+}
+
+slides > slide:not(.nobackground):before {
+  background-size: 50px 50px;
+  padding-left: 50px;
+  height: 50px;
+  bottom: 5px;
+  color: #5F9EA0;
+}
+
+slides > slide > hgroup + article p {
+  font-family: Source Sans Pro;
+  font-weight: 300;
+  color: #5F9EA0;
+}
+
+.title-slide hgroup {
+  font-family: Source Sans Pro;
+  font-weight: 200;
+  color: #5F9EA0;
+}
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color:#5F9EA0;
+    color: #5F9EA0;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+div.notes {
+  color: #5F9EA0;
+}
